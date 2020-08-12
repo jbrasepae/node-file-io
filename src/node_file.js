@@ -13,7 +13,7 @@ class Visitor{
     save(){
         let nameOfFiles = this;
         let dataOfFiles = JSON.stringify(nameOfFiles, "\n", 4);
-        var theirFullNames = this.fullName.split(" ").join("_");
+        let theirFullNames = this.fullName.split(" ").join("_");
 
         fs.writeFile(`visitor_${theirFullNames}.json`, dataOfFiles, (err) =>{
             if(err) {
@@ -28,12 +28,12 @@ class Visitor{
 }
 
 function load(name){
-      var fullName = name.split(" ").join("_");
+      let fullName = name.split(" ").join("_");
      fs.readFile(`./visitor_${fullName}.json`, 'utf8', (err, jsonData) => {
         if (err) {
                 throw err;
             }
-            console.log("data loaded", jsonData); 
+            console.log("data loaded\n", jsonData); 
         })
 
 }
