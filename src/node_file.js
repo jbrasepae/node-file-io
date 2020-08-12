@@ -13,39 +13,43 @@ class Visitor{
     save(){
         let nameOfFiles = this;
         let dataOfFiles = JSON.stringify(nameOfFiles, "\n", 4);
-        let theirFullNames = this.fullName.split(" ").join("_");
+        let theirFullNames = this.fullName.toLowerCase().split(" ").join("_");
 
         fs.writeFile(`visitor_${theirFullNames}.json`, dataOfFiles, (err) =>{
             if(err) {
-                throw(Error + 'data was not saved')
+                throw Error('file was not saved');
             }
             else{
-            console.log("data is saved")
+            console.log("file is saved");
             }
         });
+        return "file is saved"
         
     }
+     load(FullNames){
+        let theirFullNames = FullNames.toLowerCase().split(" ").join("_"); 
+        fs.readFile(`./visitor_${theirFullNames}.json`, 'utf8', (err, jsonData) => {
+           if (err) {
+                   throw Error("invalid data");
+               }
+               else{
+               console.log( jsonData);
+               } 
+           })
+   
+   }
 }
 
-function load(name){
-      let fullName = name.split(" ").join("_");
-     fs.readFile(`./visitor_${fullName}.json`, 'utf8', (err, jsonData) => {
-        if (err) {
-                throw err;
-            }
-            console.log("data loaded\n", jsonData); 
-        })
-
-}
-
-let alice = new Visitor('alice cooper', 20, '15/03/2020', '11h00', 'great service', 'Boitumelo');
+let alice = new Visitor('Alice Cooper', 20, '15/03/2020', '11h00', 'great service', 'Boitumelo');
 alice.save();
-load("alice cooper")
+alice.load("Alice Cooper")
 
-let bob = new Visitor('bob marley', 18, '10/09/2019', '09H00', 'how to apply', 'Jeanette');
+let bob = new Visitor('Bob Marley', 18, '10/09/2019', '09H00', 'how to apply', 'Jeanette');
 bob.save();
-load("bob marley");
+bob.load("Bob Marley");
 
-let charlie = new Visitor('charley sheen', 22, '20/04/2019', '10h30', 'which department does umuzi offer', 'Bontle');
+let charlie = new Visitor('Charley Sheen', 22, '20/04/2019', '10h30', 'which department does umuzi offer', 'Bontle');
 charlie.save();
-load("charley sheen")
+charlie.load("Charley Sheen")
+
+module.exports = {Visitor};
