@@ -18,22 +18,25 @@ describe("Visitor", function(){
     it("should show the person who assisted the visitor", function(){
         expect(alice.assistedBy).toBe("Boitumelo")
     })
+    it('save() should be defined', function(){
+        expect(alice.save()).toBeDefined()
+    })
     it(" should create and save file as json", function(){
         expect(alice.save()).toBe('file is saved')
     })
     // it(" should throw error when function cannot create file as json", function(){
-    //     //expect(alice.save()).toBe('file is saved')
-    //     expect(function(){alice}).toThrow('file was not saved')
+    //     expect(save()).toThrow('file was not saved')
     // })
     // it(" should read the files data with the defined name", function(){
-    //     expect(alice.load('Alice Cooper')).toBe({
+    //     jsonData = {
     //         "fullName": "Alice Cooper",
     //         "age": 20,
     //         "dateOfVisit": "15/03/2020",
     //         "timeOfVisit": "11h00",
     //         "comments": "great service",
     //         "assistedBy": "Boitumelo"
-    //     })
+    //     }
+    //     expect(alice.load('Alice Cooper')).toBe(jsonData)
     // })
 })
 
