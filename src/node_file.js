@@ -11,11 +11,9 @@ class Visitor{
     }
 
     save(){
-        let nameOfFiles = this;
-        let dataOfFiles = JSON.stringify(nameOfFiles, "\n", 4);
-        let theirFullNames = this.fullName.toLowerCase().split(" ").join("_");
 
-        fs.writeFile(`visitor_${theirFullNames}.json`, dataOfFiles, (err) =>{
+        let theirFullNames = this.fullName.toLowerCase().split(" ").join("_");
+        fs.writeFile(`visitor_${theirFullNames}.json`, JSON.stringify(this, "\n", 4), (err) =>{
             if(err) {
                 throw Error('file was not saved');
             }
@@ -23,9 +21,9 @@ class Visitor{
             console.log("file is saved");
             }
         });
-        return "file is saved"
-        
+        return "file is saved"     
     }
+
      load(FullNames){
         let theirFullNames = FullNames.toLowerCase().split(" ").join("_"); 
         fs.readFile(`./visitor_${theirFullNames}.json`, 'utf8', (err, jsonData) => {
@@ -35,9 +33,9 @@ class Visitor{
                else{
                console.log( jsonData);
                } 
-           })
-   
-   }
+        });
+        //return (jsonData);
+    }
 }
 
 let alice = new Visitor('Alice Cooper', 20, '15/03/2020', '11h00', 'great service', 'Boitumelo');
