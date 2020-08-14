@@ -20,8 +20,8 @@ class Visitor{
         return "file is saved"     
     }
 
-     load(FullNames){
-        let theirFullNames = FullNames.toLowerCase().split(" ").join("_"); 
+     load(FullName){
+        let theirFullNames = FullName.toLowerCase().split(" ").join("_"); 
         fs.readFile(`./visitor_${theirFullNames}.json`, 'utf8', (err, data) => {
            if (err) {
                    throw Error("invalid data");
