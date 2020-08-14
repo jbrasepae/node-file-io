@@ -16,9 +16,6 @@ class Visitor{
             if(err) {
                 throw Error('file was not saved');
             }
-            // else{
-            // console.log("file is saved");
-            // }
         });
         return "file is saved"     
     }
@@ -31,21 +28,21 @@ class Visitor{
                }
                else{
                console.log(data);
-               } 
+            } 
         });
     }
 }
 
 let alice = new Visitor('Alice Cooper', 20, '15/03/2020', '11h00', 'great service', 'Boitumelo');
 alice.save();
-alice.load("Alice Cooper")
+alice.load("Alice Cooper");
 
-let bob = new Visitor('Bob Marley', 18, '10/09/2019', '09H00', 'keep up the good work', 'Jeanette');
+let bob = new Visitor('Bob Marley', 19, '10/09/2019', '09H00', 'keep up the good work', 'Jeanette');
 bob.save();
 bob.load("Bob Marley");
 
 let charlie = new Visitor('Charley Sheen', 22, '20/04/2019', '10h30', 'amazing work', 'Bontle');
 charlie.save();
-charlie.load("Charley Sheen")
+charlie.load("Charley Sheen");
 
 module.exports = {Visitor};
