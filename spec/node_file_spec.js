@@ -1,4 +1,6 @@
-const {Visitor} = require('../src/node_file')
+const {Visitor, load} = require('../src/node_file');
+let fs = require("fs");
+
 let alice = new Visitor('Alice Cooper', 20, '15/03/2020', '11h00', 'great service', 'Boitumelo');
 
 describe("Visitor", function(){
@@ -21,4 +23,8 @@ describe("Visitor", function(){
         expect(alice.save()).toBe('file is saved')
     })
 })
-
+describe('function load()', function(){
+    it('should exists', function(){
+        expect(load).toBeDefined()
+    })
+})

@@ -19,30 +19,29 @@ class Visitor{
         });
         return "file is saved"     
     }
-
-     load(FullName){
-        let theirFullNames = FullName.toLowerCase().split(" ").join("_"); 
-        fs.readFile(`./visitor_${theirFullNames}.json`, 'utf8', (err, data) => {
-           if (err) {
-                   throw Error("invalid data");
-               }
-               else{
-               console.log(data);
-            } 
-        });
-    }
+}
+function load(FullName){
+    let theirFullNames = FullName.toLowerCase().split(" ").join("_"); 
+    fs.readFile(`./visitor_${theirFullNames}.json`, 'utf8', (err, data) => {
+       if (err) {
+               throw Error("invalid data");
+           }
+           else{
+           console.log(data);
+        } 
+    });
 }
 
 let alice = new Visitor('Alice Cooper', 20, '15/03/2020', '11h00', 'great service', 'Boitumelo');
 alice.save();
-alice.load("Alice Cooper");
+load("Alice Cooper");
 
 let bob = new Visitor('Bob Marley', 19, '10/09/2019', '09H00', 'keep up the good work', 'Jeanette');
 bob.save();
-bob.load("Bob Marley");
+load("Bob Marley");
 
 let charlie = new Visitor('Charley Sheen', 22, '20/04/2019', '10h30', 'amazing work', 'Bontle');
 charlie.save();
-charlie.load("Charley Sheen");
+load("Charley Sheen");
 
-module.exports = {Visitor};
+module.exports = {Visitor, load};
