@@ -31,17 +31,4 @@ function load(FullName){
         } 
     });
 }
-
-let alice = new Visitor('Alice Cooper', 20, '15/03/2020', '11h00', 'great service', 'Boitumelo');
-alice.save();
-load("Alice Cooper");
-
-let bob = new Visitor('Bob Marley', 19, '10/09/2019', '09H00', 'keep up the good work', 'Jeanette');
-bob.save();
-load("Bob Marley");
-
-let charlie = new Visitor('Charley Sheen', 22, '20/04/2019', '10h30', 'amazing work', 'Bontle');
-charlie.save();
-load("Charley Sheen");
-
 module.exports = {Visitor, load};
